@@ -12,6 +12,7 @@ const SwimTeam = {
     console.log(`Lets go: ${direction}`);
 
     // set the swim-team's direction
+      //applies the css
     $('.swimmer')
       .removeClass((idx, classNames) => {
         var name = classNames.match(/(turn-\w+)/);
@@ -20,6 +21,7 @@ const SwimTeam = {
       .addClass(`turn-${direction}`);
 
     // same direction as last time? -> if yes, move the swim-team
+      //functionality of the code
     if (SwimTeam.direction === direction) {
       SwimTeam.updateLoc(direction);
       $('.team')

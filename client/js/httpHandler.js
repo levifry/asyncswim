@@ -1,9 +1,35 @@
 (function() {
+  console.log('page load')
 
   const serverUrl = 'http://127.0.0.1:3000';
 
 
   //TODO: build the swim command fetcher here
+  function repeater(){
+    console.log("Repeater called")
+
+    setTimeout( ()=>{
+      $.ajax({
+        type: 'GET',
+        url: 'http://localhost:3000/swimmer-says',
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: (data) => {
+          console.log("Here is our success!",data)
+          // reload the page
+          //we may need to simulate key presses here inside our swim team.
+          window.location = window.location.href;
+        },
+      });
+      console.log('recursing our repeater')
+
+      repeater()
+    },2000)
+  }
+
+
+  repeater();
 
 
   /////////////////////////////////////////////////////////////////////
@@ -43,6 +69,7 @@
       return;
     }
 
+    console.log('form submitted')
     ajaxFileUpload(file);
   });
 

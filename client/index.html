@@ -1,20 +1,24 @@
-<html>
+<html lang="en">
 <head>
+  <title>page</title>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
 </head>
 <body>
   <h1>A Synchronous Swim</h1>
-  <div class="pool">
+  <div class="pool background">
     <div class="team">
       <div class="swimmer">↜</div>
       <div class="swimmer">↜</div>
       <div class="swimmer">↜</div>
-      <div class="swimmer">↜</div>
+      <div class="swimmer">↜</div> <!-- 🦈 -->
     </div>
   </div>
   <h3>Background Image Upload</h3>
   <form>
-    <input type="file" class="file" /><br>
+    <label>input 1
+    <input type="file" class="file" /></label><br>
     <input type="submit" />
   </form>
 </body>
@@ -22,5 +26,5 @@
 <script src="/node_modules/underscore/underscore.js"></script>
 <script src="/js/swimTeam.js"></script>
 <script src="/js/keypressHandler.js"></script>
+<script src="/js/httpHandler.js"></script>
 </html>
-
