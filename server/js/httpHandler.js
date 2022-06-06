@@ -27,9 +27,21 @@ module.exports.router = (req, res, next = ()=>{}) => {
     if (req.method === 'GET') {
       let randomMove;
       res.writeHead(200, headers);
-      // Math.floor(Math.random() * 5)+1;
-      res.write(`${randomMove}`, 'utf8', () => {})
-      res.end("swimmer says: drop and give me twenty");
+      let thisIsTheWay = Math.floor(Math.random() * 5)+1; //will be 1-4
+      switch(thisIsTheWay){
+        case 1:
+          res.end('left')
+          break;
+        case 2:
+          res.end('up')
+          break;
+        case 3:
+          res.end('right')
+          break;
+        default:
+          res.end('down')
+      }
+
     }
   } else {
     if (req.method === 'GET') {

@@ -27,19 +27,23 @@ h3 {
   text-align: center;
   display: inline-block;
 }
+.swimmer.rocket {
+  transform: rotate(45deg);
+}
+
 .turn-left {
   transform: rotate(0deg);
-
+  transition: all 400ms ease;
 }
 .turn-up {
   transform: rotate(90deg);
-
+  transition: all 400ms ease;
 }
 .turn-right {
   transform: rotate(180deg);
-
+  transition: all 400ms ease;
 }
 .turn-down {
   transform: rotate(270deg);
-
+  transition: all 400ms ease;
 }
