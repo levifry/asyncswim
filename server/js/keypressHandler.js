@@ -26,7 +26,7 @@ const logKeypress = (key) => {
 
 var message = ''; // a buffer to collect key presses
 
-module.exports.initialize = (callback) => {
+module.exports.initialize = (callback) => {//this is where we enque
 
   // setup an event handler on standard input
   process.stdin.on('keypress', (chunk, key) => {
@@ -38,14 +38,18 @@ module.exports.initialize = (callback) => {
     // check to see if the keypress itself is a valid message
     if (isValidMessage(key.name)) {
       callback(key.name);
+
+      console.log("here is our key.name",key.name)
       return; // don't do any more processing on this key
     }
-    
+
     // otherwise build up a message from individual characters
     if (key && (key.name === 'return' || key.name === 'enter')) {
       // on enter, process the message
       logKeypress('\n');
       if (message.length > 0) {
+        console.log("here is our message",message)
+
         callback(message);
         message = ''; // clear the buffer where we are collecting keystrokes
       }
@@ -53,6 +57,7 @@ module.exports.initialize = (callback) => {
       // collect the individual characters/keystrokes
       message += (mappedChars[key.name] || key.name);
       logKeypress(key.name);
+
     }
 
   });
@@ -63,6 +68,7 @@ module.exports.initialize = (callback) => {
 ///////////////////////////////////////////////////////////////////////////////
 
 keypress(process.stdin);
+// console.log("Here is the process.stdin",process.stdin)
 if (process.stdin.setRawMode) {
   // configure stdin for raw mode, if possible
   process.stdin.setRawMode(true);

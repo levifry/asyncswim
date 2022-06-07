@@ -4,6 +4,7 @@ module.exports.getBoundary = function(buffer) {
   var finder = /--(----\w+)\b/;
   var boundary = buffer.toString().match(finder);
   return boundary ? boundary[1] : null;
+  console.log("getBoundary was called")
 };
 
 module.exports.parse = function(buffer) {
