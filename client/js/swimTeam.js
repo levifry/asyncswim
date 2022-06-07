@@ -22,7 +22,7 @@ const SwimTeam = {
 
     // same direction as last time? -> if yes, move the swim-team
       //functionality of the code
-    if (SwimTeam.direction === direction) {
+    if (SwimTeam.direction) {
       SwimTeam.updateLoc(direction);
       $('.team')
         .css('top', `${SwimTeam.coords.top}px`)
@@ -36,38 +36,39 @@ const SwimTeam = {
     if (!direction) {
       return false;
     }
-    if (['left', 'right', 'up', 'down'].indexOf(direction) < 0 ) {
+    if (['left', 'right', 'up', 'down', 'up right', 'up left', 'down right', 'down left'].indexOf(direction) < 0 ) {
       console.log(`Ignoring command: ${direction}`);
       return false;
     }
     return true;
   },
-
   updateLoc: (direction) => {
     // calculate what the new position is for the swim-team
     // but don't let the swim-team get outside the max bounds!
-    switch (direction) {
-    case 'up':
+    if (direction.includes("up")) {
       if (SwimTeam.coords.top > SwimTeam.max.top) {
         SwimTeam.coords.top -= 5;
       }
-      break;
-    case 'down':
+    }
+    if (direction.includes("down")) {
       if (SwimTeam.coords.top < SwimTeam.max.bottom) {
         SwimTeam.coords.top += 5;
       }
-      break;
-    case 'left':
+    }
+
+    if (direction.includes("left")) {
       if (SwimTeam.coords.left > SwimTeam.max.left) {
         SwimTeam.coords.left -= 5;
       }
-      break;
-    case 'right':
+    }
+
+    if (direction.includes("right")) {
       if (SwimTeam.coords.left < SwimTeam.max.right) {
         SwimTeam.coords.left += 5;
       }
-      break;
     }
   }
+
+
 
 };
