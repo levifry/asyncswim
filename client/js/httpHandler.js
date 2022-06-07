@@ -1,7 +1,8 @@
 (function() {
   console.log('page load')
 
-  const serverUrl = 'http://127.0.0.1:3000';
+  const serverUrl = 'http://127.0.0.1:3001';
+
 
 
   //TODO: build the swim command fetcher here
@@ -11,7 +12,7 @@
     setTimeout( ()=>{
       $.ajax({
         type: 'GET',
-        url: 'http://localhost:3000/swimmer-says/',
+        url: 'http://localhost:3001/swimmer-says/',
         cache: false,
         contentType: false,
         processData: false,
@@ -26,11 +27,11 @@
 
 
       repeater()
-    },550)
+    },2000)
   }
-
-
   repeater();
+
+
 
 
   /////////////////////////////////////////////////////////////////////
@@ -41,18 +42,20 @@
   const ajaxFileUpload = (file) => {
     var formData = new FormData();
     formData.append('file', file);
-    $.ajax({
-      type: 'POST',
-      data: formData,
-      url: 'FILL_ME_IN',
-      cache: false,
-      contentType: false,
-      processData: false,
-      success: () => {
-        // reload the page
-        window.location = window.location.href;
+    $.ajax(
+      {
+        type: 'POST',
+        data: formData,
+        url: 'http://localhost:3001/background.jpg',
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: () => {
+          // reload the page
+          window.location = window.location.href;
+        }
       }
-    });
+    );
   };
 
   $('form').on('submit', function(e) {
