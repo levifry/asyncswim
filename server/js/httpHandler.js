@@ -101,7 +101,7 @@ module.exports.router = (req, res, next = () => {}) => {
           res.writeHead(err ? 404 : 200, headers);
           res.end()
         });
-        next();
+        next(); //comment
       });
     }
   }
